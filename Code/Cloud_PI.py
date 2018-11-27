@@ -9,8 +9,14 @@ Yellow = 16
 Blue1  = 18 #Blue upper part
 Blue2  = 32 #Blue lower part
 
-
 GPIO.setmode(GPIO.BOARD)
+
+GPIO.setup(White,  GPIO.OUT)
+GPIO.setup(Yellow, GPIO.OUT)
+GPIO.setup(Blue1,  GPIO.OUT)
+GPIO.setup(Blue2,  GPIO.OUT)
+
+
 
 while True:
 
