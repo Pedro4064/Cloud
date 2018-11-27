@@ -1,0 +1,17 @@
+Partly Cloudy--->White
+Mostly Cloudy -->White
+Cloudy---------->White
+
+Thunderstorms------------>Whithe & Blue
+Scattered Thunderstorms-->White & Blue
+
+Sunny --------->Yellow
+Mostly Sunny -->Yellow
+
+
+Rain ---->Blue
+Scattered Showers ----->Blue
+Showers---------------->Blue
+
+
+Breezy------->White and Yellow
