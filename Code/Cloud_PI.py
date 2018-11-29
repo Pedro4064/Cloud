@@ -96,7 +96,7 @@ while True:
             GPIO.output(Blue2,   GPIO.LOW)
 
 
-        print("The forecast is:", Forecast)
+        print("The forecast is:",Forecast)
         time.sleep(60)
 
 
