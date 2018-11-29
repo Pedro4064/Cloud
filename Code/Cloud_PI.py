@@ -31,7 +31,7 @@ while True:
 
     #Get the next day's Forecast
     Forecast = jsonFile["query"]["results"]["channel"]["item"]["forecast"][1]["text"]
-    mornig   = jsonFile["query"]["results"]["item"]["condition"]["text"]
+    mornig   = jsonFile["query"]["results"]["channel"]["item"]["condition"]["text"]
 
     #update the hour variable
     hour = now.hour
