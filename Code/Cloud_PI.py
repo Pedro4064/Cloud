@@ -1,5 +1,6 @@
 import json
 import time
+import datetime
 import requests
 import RPi.GPIO as GPIO
 
@@ -17,6 +18,10 @@ GPIO.setup(Blue1,  GPIO.OUT)
 GPIO.setup(Blue2,  GPIO.OUT)
 
 
+#Get the current datetime and initialize the hour variable
+now  = datetime.datetime.now()
+hour = 0
+
 
 while True:
 
@@ -26,63 +31,138 @@ while True:
 
     #Get the next day's Forecast
     Forecast = jsonFile["query"]["results"]["channel"]["item"]["forecast"][1]["text"]
+    mornig   = jsonFile["query"]["results"]["item"]["condition"]["text"]
 
-
-    if Forecast == "Partly Cloudy" or Forecast == "Mostly Cloudy" or Forecast == "Cloudy":
-        print("White LEDs on")
-        Turn on the LEDs
-        GPIO.output(White,   GPIO.HIGH)
-        GPIO.output(Yellow,  GPIO.LOW)
-        GPIO.output(Blue1,   GPIO.LOW)
-        GPIO.output(Blue2,   GPIO.LOW)
+    #update the hour variable
+    hour = now.hour
 
 
 
-    elif Forecast == "Thunderstorms" or Forecast == "Scattered Thunderstorms":
-        print("Blue and White LEDs are on")
-        #Turn on the LEDs
-        GPIO.output(White,   GPIO.HIGH)
-        GPIO.output(Yellow,  GPIO.LOW)
-        GPIO.output(Blue1,   GPIO.LOW)
-        GPIO.output(Blue2,   GPIO.HIGH)
-        Maybe turn the Blue LEDs on and off (To fake Thunderstorms)
+    #Print the Forecast(next day)
+    if hour > 9:
+
+        #Set the state of the GPIO pins
+        if Forecast == "Partly Cloudy" or Forecast == "Mostly Cloudy" or Forecast == "Cloudy":
+            print("White LEDs on")
+            #Turn on the LEDs
+            GPIO.output(White,   GPIO.HIGH)
+            GPIO.output(Yellow,  GPIO.LOW)
+            GPIO.output(Blue1,   GPIO.LOW)
+            GPIO.output(Blue2,   GPIO.LOW)
 
 
-    elif Forecast == "Sunny" or Forecast == "Mostly Sunny":
-        print("Yellow LEDs are on")
-        Turn on the LEDs
-        GPIO.output(White,   GPIO.LOW)
-        GPIO.output(Yellow,  GPIO.HIGH)
-        GPIO.output(Blue1,   GPIO.LOW)
-        GPIO.output(Blue2,   GPIO.LOW)
 
-    elif Forecast == "Rain" or Forecast == "Scattered Showers" or Forecast == "Showers":
-        print("Blue LEDs are on")
-        Turn on the LEDs
-        GPIO.output(White,   GPIO.LOW)
-        GPIO.output(Yellow,  GPIO.LOW)
-        GPIO.output(Blue1,   GPIO.HIGH)
-        GPIO.output(Blue2,   GPIO.HIGH)
+        elif Forecast == "Thunderstorms" or Forecast == "Scattered Thunderstorms":
+            print("Blue and White LEDs are on")
+            #Turn on the LEDs
+            GPIO.output(White,   GPIO.HIGH)
+            GPIO.output(Yellow,  GPIO.LOW)
+            GPIO.output(Blue1,   GPIO.LOW)
+            GPIO.output(Blue2,   GPIO.HIGH)
+            #Maybe turn the Blue LEDs on and off (To fake Thunderstorms)
 
 
-    elif Forecast == "Breezy":
-        print("Yellow and White LEDs are on")
-        Turn on the LEDs
-        GPIO.output(White,   GPIO.HIGH)
-        GPIO.output(Yellow,  GPIO.HIGH)
-        GPIO.output(Blue1,   GPIO.LOW)
-        GPIO.output(Blue2,   GPIO.LOW)
+        elif Forecast == "Sunny" or Forecast == "Mostly Sunny":
+            print("Yellow LEDs are on")
+            #Turn on the LEDs
+            GPIO.output(White,   GPIO.LOW)
+            GPIO.output(Yellow,  GPIO.HIGH)
+            GPIO.output(Blue1,   GPIO.LOW)
+            GPIO.output(Blue2,   GPIO.LOW)
 
-    else:
-        print("Shit, update the code for the current weather")
-        #Turn on the LEDs
-        GPIO.output(White,   GPIO.LOW)
-        GPIO.output(Yellow,  GPIO.LOW)
-        GPIO.output(Blue1,   GPIO.LOW)
-        GPIO.output(Blue2,   GPIO.LOW)
+        elif Forecast == "Rain" or Forecast == "Scattered Showers" or Forecast == "Showers":
+            print("Blue LEDs are on")
+            #Turn on the LEDs
+            GPIO.output(White,   GPIO.LOW)
+            GPIO.output(Yellow,  GPIO.LOW)
+            GPIO.output(Blue1,   GPIO.HIGH)
+            GPIO.output(Blue2,   GPIO.HIGH)
 
 
-    print("The forecast is:", Forecast)
-    time.sleep(60)
+        elif Forecast == "Breezy":
+            print("Yellow and White LEDs are on")
+            #Turn on the LEDs
+            GPIO.output(White,   GPIO.HIGH)
+            GPIO.output(Yellow,  GPIO.HIGH)
+            GPIO.output(Blue1,   GPIO.LOW)
+            GPIO.output(Blue2,   GPIO.LOW)
 
-    #print(Forecast)
+        else:
+            print("Shit, update the code for the current weather")
+            #Turn on the LEDs
+            GPIO.output(White,   GPIO.LOW)
+            GPIO.output(Yellow,  GPIO.LOW)
+            GPIO.output(Blue1,   GPIO.LOW)
+            GPIO.output(Blue2,   GPIO.LOW)
+
+
+        print("The forecast is:", Forecast)
+        time.sleep(60)
+
+
+    #Turn all the LEDs off for the night
+    if hour < 5:
+        GPIO.output(White,  GPIO.LOW)
+        GPIO.output(Yellow, GPIO.LOW)
+        GPIO.output(Blue1,  GPIO.LOW)
+        GPIO.output(Blue2,  GPIO.LOW)
+
+    #Print for the day
+    if hour >=5 and hour <= 9:
+
+        if mornig == "Partly Cloudy" or mornig == "Mostly Cloudy" or mornig == "Cloudy":
+            print("White LEDs on")
+            #Turn on the LEDs
+            GPIO.output(White,   GPIO.HIGH)
+            GPIO.output(Yellow,  GPIO.LOW)
+            GPIO.output(Blue1,   GPIO.LOW)
+            GPIO.output(Blue2,   GPIO.LOW)
+
+
+
+        elif mornig == "Thunderstorms" or mornig == "Scattered Thunderstorms":
+            print("Blue and White LEDs are on")
+            #Turn on the LEDs
+            GPIO.output(White,   GPIO.HIGH)
+            GPIO.output(Yellow,  GPIO.LOW)
+            GPIO.output(Blue1,   GPIO.LOW)
+            GPIO.output(Blue2,   GPIO.HIGH)
+            #Maybe turn the Blue LEDs on and off (To fake Thunderstorms)
+
+
+        elif mornig == "Sunny" or mornig == "Mostly Sunny":
+            print("Yellow LEDs are on")
+            #Turn on the LEDs
+            GPIO.output(White,   GPIO.LOW)
+            GPIO.output(Yellow,  GPIO.HIGH)
+            GPIO.output(Blue1,   GPIO.LOW)
+            GPIO.output(Blue2,   GPIO.LOW)
+
+        elif mornig == "Rain" or mornig == "Scattered Showers" or mornig == "Showers":
+            print("Blue LEDs are on")
+            #Turn on the LEDs
+            GPIO.output(White,   GPIO.LOW)
+            GPIO.output(Yellow,  GPIO.LOW)
+            GPIO.output(Blue1,   GPIO.HIGH)
+            GPIO.output(Blue2,   GPIO.HIGH)
+
+
+        elif mornig == "Breezy":
+            print("Yellow and White LEDs are on")
+            #Turn on the LEDs
+            GPIO.output(White,   GPIO.HIGH)
+            GPIO.output(Yellow,  GPIO.HIGH)
+            GPIO.output(Blue1,   GPIO.LOW)
+            GPIO.output(Blue2,   GPIO.LOW)
+
+        else:
+            print("Shit, update the code for the current weather")
+            #Turn on the LEDs
+            GPIO.output(White,   GPIO.LOW)
+            GPIO.output(Yellow,  GPIO.LOW)
+            GPIO.output(Blue1,   GPIO.LOW)
+            GPIO.output(Blue2,   GPIO.LOW)
+
+
+        print("The mornig is:", mornig)
+        time.sleep(60)
