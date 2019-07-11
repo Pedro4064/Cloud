@@ -3,6 +3,7 @@
 •Inspired by a [post on instructables](https://www.instructables.com/id/Weather-Forecast-Cloud/).<br/>
 •Cloud shaped lamp that changes color depending on the weather forecast.<br/>
 •Uses a [Raspberry Pi Zero W](https://www.raspberrypi.org/products/raspberry-pi-zero-w/) and Python.<br/>
+•You may download the [Fusion360 file](https://myhub.autodesk360.com/ue2dd8605/g/projects/20180428129687051/data/dXJuOmFkc2sud2lwcHJvZDpmcy5mb2xkZXI6Y28uRnA5QnpITk1SdGVNSzVnZEN2NllPZw/dXJuOmFkc2sud2lwcHJvZDpkbS5saW5lYWdlOi1YbW5ENzkzUVN1WWV2R0Zaemt1NlE?show=viewer) so you can laser cut the parts.<br/>
 
 
 ## Python
