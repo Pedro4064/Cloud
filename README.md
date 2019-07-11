@@ -1,0 +1,23 @@
+# Cloud Lamp
+
+•Inspired by a [post on instructables](https://www.instructables.com/id/Weather-Forecast-Cloud/)
+•Cloud shaped lamp that changes color depending on the weather forecast
+•Uses a [Raspberry Pi Zero W](https://www.raspberrypi.org/products/raspberry-pi-zero-w/) and Python
+
+
+## Python
+
+#### Preinstalled Modules
+•json<br/>
+•time<br/>
+•requests<br/>
+•datetime<br/>
+
+### Modules that need to be installed separately
+•[RPi.GPIO](https://pypi.org/project/RPi.GPIO/)<br/>
+
+
+### 3d Renders
+
+![Renders](https://github.com/Pedro4064/Cloud/blob/master/Images/Renders/Cloud_2018-Nov-27_04-24-08PM-000_CustomizedView15575101724_png.png?raw=true)
+![Renders](https://github.com/Pedro4064/Cloud/blob/master/Images/Renders/Cloud_2018-Nov-27_04-24-37PM-000_CustomizedView10814065857_png.png?raw=true)
