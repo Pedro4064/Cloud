@@ -23,7 +23,7 @@
 ![Renders](https://github.com/Pedro4064/Cloud/blob/master/Images/Renders/Cloud_2018-Nov-27_04-24-08PM-000_CustomizedView15575101724_png.png?raw=true)
 ![Renders](https://github.com/Pedro4064/Cloud/blob/master/Images/Renders/Cloud_2018-Nov-27_04-24-37PM-000_CustomizedView10814065857_png.png?raw=true)
 
-<figure class="video_container">
+
   <iframe src="https://myhub.autodesk360.com/ue2dd8605/shares/public/SHabee1QT1a327cf2b7a3fbfedef8a8d9c8b?mode=embed" width="640" height="480" allowfullscreen="true" frameborder="0" ></iframe>
-</figure>
+
 
